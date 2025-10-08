@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine   # usa uma versão específica e leve
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: nb
+      POSTGRES_PASSWORD: nb
+      POSTGRES_DB: todo_db
+    ports:
+      - "5432:5432"
