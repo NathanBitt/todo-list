@@ -1,6 +1,7 @@
 package com.nb.dev.todo_list.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "tbl_todo")
@@ -8,7 +9,13 @@ public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length = 150)
+    @NotBlank(message = "a task não pode ser nula")
     private String task;
+    //@Size(min = 1, max = 3, message = "a priority deve ser entre 1 e 3, sendo 3 a mais alta")
+    @Min(value = 1, message = "priority deve sentre 1-3, sendo 1 a mais alta")
+    @Max(value = 3, message = "priority deve sentre 1-3, sendo 1 a mais alta")
+    @NotNull(message = "a prioridade precisa ser definida")
     private Integer priority;
     private Boolean isReleased;
 

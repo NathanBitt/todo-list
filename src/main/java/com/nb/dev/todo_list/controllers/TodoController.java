@@ -2,6 +2,7 @@ package com.nb.dev.todo_list.controllers;
 
 import com.nb.dev.todo_list.dtos.TodoDTO;
 import com.nb.dev.todo_list.services.TodoService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class TodoController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<List<TodoDTO>> createTodo(@RequestBody TodoDTO todo){
+    public ResponseEntity<List<TodoDTO>> createTodo(@Valid @RequestBody TodoDTO todo){
        List<TodoDTO> todos = todoService.createTodo(todo);
        return ResponseEntity
                .status(HttpStatus.CREATED)
