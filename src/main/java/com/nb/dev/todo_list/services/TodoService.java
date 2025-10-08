@@ -2,6 +2,7 @@ package com.nb.dev.todo_list.services;
 
 import com.nb.dev.todo_list.dtos.TodoDTO;
 import com.nb.dev.todo_list.entities.Todo;
+import com.nb.dev.todo_list.exceptions.TodoNotFoundException;
 import com.nb.dev.todo_list.repositories.TodoRepository;
 import org.springframework.stereotype.Service;
 
@@ -47,7 +48,7 @@ public class TodoService {
         return todoRepository
                 .findById(id)
                 .orElseThrow(
-                        () -> new RuntimeException("Todo de id " + id + " não encontrada"));
+                        () -> new TodoNotFoundException("Todo de id " + id + " não encontrada no banco de dados"));
     }
 
 
