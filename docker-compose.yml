@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   db:
-    image: postgres:16-alpine   # usa uma versão específica e leve
+    image: postgres:16-alpine
     container_name: postgres_db
     environment:
       POSTGRES_USER: nb

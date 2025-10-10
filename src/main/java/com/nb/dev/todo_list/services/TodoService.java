@@ -4,6 +4,7 @@ import com.nb.dev.todo_list.dtos.TodoDTO;
 import com.nb.dev.todo_list.entities.Todo;
 import com.nb.dev.todo_list.exceptions.TodoNotFoundException;
 import com.nb.dev.todo_list.repositories.TodoRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,13 +19,27 @@ public class TodoService {
     }
 
     public List<TodoDTO> listTodos(){
+        Sort sort = Sort.by("priority").ascending().and(Sort.by("task"));
         return todoRepository
-                .findAll()
+                .findAll(sort)
                 .stream()
                 .map(todo -> new TodoDTO(
                         todo.getTask(),
                         todo.getPriority(),
                         todo.getReleased()))
+                .toList();
+    }
+
+    public List<TodoDTO> releasedTodos(){
+
+        return todoRepository
+                .findTodosReleased()
+                .stream()
+                .map(todo -> new TodoDTO(
+                        todo.getTask(),
+                        todo.getPriority(),
+                        todo.getReleased()
+                ))
                 .toList();
     }
 

@@ -42,6 +42,11 @@ public class TodoController {
         return todoService.listTodos();
     }
 
+    @GetMapping("/released")
+    public List<TodoDTO> listTodosReleased(){
+        return todoService.releasedTodos();
+    }
+
 
 
 
