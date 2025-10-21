@@ -6,7 +6,7 @@ Essa é uma todo list simples que desenvolvi para treinar alguns conceitos, e co
 
 - CRUD 
 - Todos os endpoints retornam uma lista
-- As listas ordenadas por prioridade
+- Listas ordenadas por prioridade
 - Buscas por id
 - Validações
 - Tratamento de exeções
