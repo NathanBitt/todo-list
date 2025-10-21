@@ -10,3 +10,16 @@ services:
       POSTGRES_DB: todo_db
     ports:
       - "5432:5432"
+
+  app:
+    build: .
+    container_name: todo_app
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/todo_db
+      SPRING_DATASOURCE_USERNAME: nb
+      SPRING_DATASOURCE_PASSWORD: nb
+    ports:
+      - "8080:8080"
+  
